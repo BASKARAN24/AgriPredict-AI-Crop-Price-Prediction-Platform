@@ -41,7 +41,9 @@ AgriPredict/
 ├── ml_model/           # Serialized (.pkl) ML models
 ├── templates/          # UI Components (Home, Predict, Recommend, etc.)
 └── static/             # Styling & Asset management
-⚙️ Quick Start
+---
+
+## ⚙️ Quick Start
 Clone & Install:
 
 
