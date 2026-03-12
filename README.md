@@ -33,16 +33,6 @@ Instead of manual entry, the weather module fetches live JSON data from the **Op
 | **Data API** | OpenWeatherMap API |
 | **Environment** | VS Code, Pip, Virtualenv |
 
-## 📂 Project Structure
-
-```text
-AgriPredict/
-├── app.py              # Flask server & API routing logic
-├── ml_model/           # Serialized (.pkl) ML models
-├── templates/          # UI Components (Home, Predict, Recommend, etc.)
-└── static/             # Styling & Asset management
----
-
 ## ⚙️ Quick Start
 Clone & Install:
 
@@ -52,9 +42,22 @@ pip install flask pandas numpy scikit-learn requests
 API Configuration:
 In app.py, insert your API Key:
 
-
 WEATHER_API_KEY = "your_openweathermap_key_here"
 Launch:
+
+
+python app.py
+## 📂 Project Structure
+
+```text
+AgriPredict/
+├── app.py              # Flask server & API routing logic
+├── ml_model/           # Serialized (.pkl) ML models
+├── templates/          # UI Components (Home, Predict, Recommend, etc.)
+└── static/             # Styling & Asset management
+
+
+
 
 
 python app.py
