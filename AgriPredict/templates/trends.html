@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriPredict | Market Trends</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        :root { --primary-green: #2e7d32; --glass-white: rgba(255, 255, 255, 0.95); }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
+                        url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&q=80&w=1500');
+            background-size: cover; background-attachment: fixed; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh;
+        }
+        .navbar { width: 100%; background: var(--glass-white); padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: flex; justify-content: center; position: sticky; top: 0; z-index: 100; }
+        .nav-content { width: 90%; max-width: 1200px; display: flex; justify-content: space-between; align-items: center; }
+        .back-home { text-decoration: none; color: var(--primary-green); font-weight: 600; }
+        
+        .container { width: 90%; max-width: 900px; background: var(--glass-white); margin: 40px 0; padding: 40px; border-radius: 24px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); text-align: center; }
+        .chart-wrapper { margin-top: 30px; background: white; padding: 20px; border-radius: 15px; border: 1px solid #eee; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="back-home">Back to Dashboard</a>
+            <div style="font-weight: 600; color: #2e7d32;">📈 Market Price Trends</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 style="color: var(--primary-green); margin: 0;">Price Analysis</h2>
+        <p style="color: #666;">Monthly average price fluctuations (per Quintal)</p>
+
+        <div class="chart-wrapper">
+            <canvas id="marketChart"></canvas>
+        </div>
+
+        <div style="margin-top: 30px; font-size: 14px; color: #555; line-height: 1.6;">
+            <p>💡 <strong>Insight:</strong> Prices usually peak during the pre-harvest months. Plan your sales accordingly to maximize profit.</p>
+        </div>
+    </div>
+
+    <script>
+        // Get data passed from Flask
+        const months = {{ data.months | tojson }};
+        const prices = {{ data.prices | tojson }};
+
+        const ctx = document.getElementById('marketChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [{
+                    label: 'Market Price (₹)',
+                    data: prices,
+                    borderColor: '#2e7d32',
+                    backgroundColor: 'rgba(46, 125, 50, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.4, // Makes the line curved
+                    fill: true,
+                    pointRadius: 6,
+                    pointBackgroundColor: '#2e7d32'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: { color: '#f0f0f0' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
