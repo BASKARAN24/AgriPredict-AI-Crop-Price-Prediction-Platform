@@ -66,6 +66,10 @@ python app.py
 ---
 ###  Weather Alerts
 <img width="1920" height="1080" alt="Screenshot (500)" src="https://github.com/user-attachments/assets/e6c73820-fa50-457a-b422-9da8b489889d" />
+<img width="1920" height="1080" alt="Screenshot (503)" src="https://github.com/user-attachments/assets/724f34cc-10a9-463a-8f34-168fb3aba044" />
+<img width="1920" height="1080" alt="Screenshot (504)" src="https://github.com/user-attachments/assets/0b5ab77d-1597-4eb1-951b-2f79b43fd951" />
+
+
 
 ---
 ### Market trend analysis
